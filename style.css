@@ -1,0 +1,76 @@
+h1
+{
+    text-align: center;
+}
+
+body
+{
+    margin: 0;
+}
+
+.container
+{
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.calculator
+{
+    border-style: solid;
+    width: 500px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+}
+
+.calculatorBtn
+{
+    width: 75px;
+    height: 75px;
+}
+
+.display
+{
+
+    height: 75px;
+    width: 400px;
+    background-color: aquamarine;
+    text-align: right;
+    font-size: 35px;
+    align-self: center;
+    align-items: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-style: solid;
+}
+
+.equalBtn
+{
+    width: 75px;
+    height: 75px;
+}
+
+.clearBtn
+{
+    width: 75px;
+    height: 75px;
+}
+
+.numbers
+{
+    border-style: solid;
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-bottom: 0;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+}
