@@ -32,13 +32,17 @@ function operate(a, b, operator)
 
 
 // Console testing
-console.log(operate(3, 3, "+"));
+/*console.log(operate(3, 3, "+"));
 console.log(operate(3, 3, "-"));
 console.log(operate(3, 3, "*"));
 console.log(operate(3, 3, "/"));
+*/
 
+
+// Getting the display
 const resultDisplay = document.getElementById("result");
 const equationDisplay = document.getElementById("equation");
+
 
 // Buttons
 
@@ -63,10 +67,14 @@ const btnMinus = document.getElementById("btnMinus");
 const btnMult = document.getElementById("btnMultiply");
 const btnDiv = document.getElementById("btnDivide");
 
+/**
+ * Initializing the local
+ */
 var resultText = "";
 var equationText = "";
 var secondNumber = "";
 var currentOperator = "";
+
 
 /**
  * Making all the buttons display in the calculator
@@ -75,9 +83,10 @@ btnClear.addEventListener('click', function()
 {
     resultText = "";
     resultDisplay.textContent = "0";
-    equationText = "0";
-    equationDisplay.textContent = equationText;
+    equationText = "";
+    equationDisplay.textContent = "0";
     equationDisplay.style.visibility = "hidden";
+    secondNumber = "";
 });
 
 btnOne.addEventListener('click', function() 
@@ -142,32 +151,126 @@ btnZero.addEventListener('click', function()
 
 btnDot.addEventListener('click', function() 
 {
+    if (resultText.includes(".")) return;
     resultText += ".";
     resultDisplay.textContent = resultText;
 });
 
 btnEqual.addEventListener('click', function() 
 {
-    equationText += resultText;
-    equationText += "=";
-    equationDisplay.textContent = equationText;
-    equationDisplay.style.visibility = "visible";
-    resultDisplay.textContent = operate(Number(secondNumber), Number(resultText), currentOperator);
-    resultText = operate(Number(secondNumber), Number(resultText), currentOperator).toString();
-    equationText = "";
+    Calculate();
 });
 
 btnPlus.addEventListener('click', function()
 {
+    if (secondNumber != "") Calculate();
+
+    if (resultText == "") resultText = "0";
     secondNumber = resultText;
     resultText = "";
     currentOperator = "+";
-
-    // TODO: when the + is clicked for the second time without clicking =,
-    // we should add the two numbers and then keep adding the third number
 
     equationText += secondNumber;
     equationText += currentOperator;
     equationDisplay.textContent = equationText;
     equationDisplay.style.visibility = "visible";
 });
+
+btnMinus.addEventListener('click', function()
+{
+    if (secondNumber != "") Calculate();
+
+    if (resultText == "") resultText = "0";
+    secondNumber = resultText;
+    resultText = "";
+    currentOperator = "-";
+
+    equationText += secondNumber;
+    equationText += currentOperator;
+    equationDisplay.textContent = equationText;
+    equationDisplay.style.visibility = "visible";
+});
+
+btnMult.addEventListener('click', function()
+{
+    if (secondNumber != "") Calculate();
+
+    if (resultText == "") resultText = "0";
+    secondNumber = resultText;
+    resultText = "";
+    currentOperator = "*";
+
+    equationText += secondNumber;
+    equationText += currentOperator;
+    equationDisplay.textContent = equationText;
+    equationDisplay.style.visibility = "visible";
+});
+
+btnDiv.addEventListener('click', function()
+{
+    if (secondNumber != "") Calculate();
+
+    if (resultText == "") resultText = "0";
+    secondNumber = resultText;
+    resultText = "";
+    currentOperator = "/";
+
+    equationText += secondNumber;
+    equationText += currentOperator;
+    equationDisplay.textContent = equationText;
+    equationDisplay.style.visibility = "visible";
+});
+
+/**
+ * Binding keyboard to buttons
+ */
+document.addEventListener('keydown', function(event)
+{
+    if(event.key == "1") btnOne.click();
+    if(event.key == "2") btnTwo.click();
+    if(event.key == "3") btnThree.click();
+    if(event.key == "4") btnFour.click();
+    if(event.key == "5") btnFive.click();
+    if(event.key == "6") btnSix.click();
+    if(event.key == "7") btnSeven.click();
+    if(event.key == "8") btnEight.click();
+    if(event.key == "9") btnNine.click();
+    if(event.key == "0") btnZero.click();
+    if(event.key == "+") btnPlus.click();
+    if(event.key == "-") btnMinus.click();
+    if(event.key == "*") btnMult.click();
+    if(event.key == "/") btnDiv.click();
+    if(event.key == "Enter") btnEqual.click();
+    if(event.key == "c") btnClear.click();
+    if(event.key == ".") btnDot.click();
+});
+
+
+/**
+ * Calculate and display the result with the current operator and numbers
+ */
+function Calculate()
+{
+    // Division by zero 
+    if (currentOperator == "/" && resultText == "0")
+    { 
+        resultDisplay.textContent = "Not possible";
+        
+        // Clear and return
+        resultText = "";
+        equationText = "";
+        equationDisplay.textContent = "0";
+        equationDisplay.style.visibility = "hidden";
+        secondNumber = "";
+        return;
+    }
+
+    equationText += resultText;
+    equationText += " =";
+    equationDisplay.textContent = equationText;
+    equationDisplay.style.visibility = "visible";
+    resultDisplay.textContent = operate(Number(secondNumber), Number(resultText), currentOperator);
+    resultText = operate(Number(secondNumber), Number(resultText), currentOperator).toString();
+    equationText = "";
+    secondNumber = "";
+}
