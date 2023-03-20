@@ -66,6 +66,7 @@ const btnPlus = document.getElementById("btnPlus");
 const btnMinus = document.getElementById("btnMinus");
 const btnMult = document.getElementById("btnMultiply");
 const btnDiv = document.getElementById("btnDivide");
+const btnBackspace = document.getElementById("btnBackspace");
 
 /**
  * Initializing the local
@@ -221,6 +222,14 @@ btnDiv.addEventListener('click', function()
     equationDisplay.style.visibility = "visible";
 });
 
+btnBackspace.addEventListener('click', function() 
+{
+    resultText = resultText.substring(0, resultText.length - 1);
+    if (resultText.length == 0) resultDisplay.textContent = "0";
+    else resultDisplay.textContent = resultText;
+    
+});
+
 /**
  * Binding keyboard to buttons
  */
@@ -243,6 +252,7 @@ document.addEventListener('keydown', function(event)
     if(event.key == "Enter") btnEqual.click();
     if(event.key == "c") btnClear.click();
     if(event.key == ".") btnDot.click();
+    if(event.key == "Backspace") btnBackspace.click();
 });
 
 

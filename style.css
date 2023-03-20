@@ -6,12 +6,13 @@ html
 h1
 {
     text-align: center;
+    color: lightsteelblue;
 }
 
 body
 {
     margin: 0;
-    background-color: blueviolet;
+    background-color: darkcyan;
 }
 
 .container
@@ -24,6 +25,14 @@ body
     justify-content: center;
 }
 
+.calculatorBorder
+{
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: darkgray;
+}
+
 .calculator
 {
     border-style: solid;
@@ -34,7 +43,7 @@ body
     grid-template-columns: auto;
     grid-template-rows: auto auto;
     align-items: center;
-    background-color: white;
+    background-color: lightgray;
 }
 
 .calculatorBtn
@@ -46,8 +55,14 @@ body
     margin-bottom: 5px;
 }
 
+.calculatorBtn, .equalBtn, .clearBtn, #btnBackspace
+{
+    background-color: darkseagreen;
+}
+
 .display
 {
+    background-color: lightblue;
     margin-top: 15px;
     height: 80px;
     width: 400px;
@@ -77,12 +92,24 @@ body
     border-radius: 15px;
 }
 
+#btnBackspace
+{
+    height: 75px;
+    align-self: center;
+    width: 150px;
+    font-size: 28px;
+    margin-left: 10px;
+    border-radius: 15px;
+}
+
 .numbers
 {
+    background-color: lightblue;
     border-style: solid;
+    border-radius: 10px;
     padding-left: 20px;
     padding-top: 30px;
-    padding-bottom: 0;
+    padding-bottom: 30px;
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 25px;
