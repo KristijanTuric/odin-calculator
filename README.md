@@ -1,7 +1,9 @@
 # Odin Calculator Project
 
 Make a caculator with basic functionality.  
-[Odin Calculator Project](https://www.theodinproject.com/lessons/foundations-calculator)
+Demo: [Calculator Project](https://kristijanturic.github.io/odin-calculator/)
+
+![Preview](preview.png)
 
 ## Project Checklist
 
@@ -13,3 +15,4 @@ Make a caculator with basic functionality.
 - [X] Added keyboard shortcuts
 - [X] Extra Credit (Backspace)
 - [X] UI Rework
+- [ ] Another UI Rework
